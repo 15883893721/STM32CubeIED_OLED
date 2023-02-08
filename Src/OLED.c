@@ -180,9 +180,11 @@ void OLED_ShowChar(unsigned char x, unsigned char y, unsigned char ch[10], unsig
 				OLED_SetPos(x,y);
 				for(i=0;i<8;i++)
 					OLED_WrDat(F8X16[c*16+i]);
+				
 				OLED_SetPos(x,y+1);
 				for(i=0;i<8;i++)
 					OLED_WrDat(F8X16[c*16+i+8]);
+				
 				x += 8;
 				j++;
 			}
@@ -216,13 +218,13 @@ void OLED_DrawBMP(unsigned char x0,unsigned char y0,unsigned char x1,unsigned ch
 	unsigned char x,y;
 
   if(y1%8==0)
-		y = y1/8;
+	y = y1/8;
   else
-		y = y1/8 + 1;
+	y = y1/8 + 1;
 	for(y=y0;y<y1;y++)
 	{
 		OLED_SetPos(x0,y);
-    for(x=x0;x<x1;x++)
+    		for(x=x0;x<x1;x++)
 		{
 			OLED_WrDat(BMP[j++]);
 		}
